@@ -1,69 +1,84 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@using Htmx.TagHelpers
+<!DOCTYPE html>
+<html class="h-full"
+      lang="en">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0"
-          name="viewport"/>
-    <title>@ViewData["Title"] - TailwindVSA</title>
-    <link asp-append-version="true"
-          href="~/css/site.css"
-          rel="stylesheet"/>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0"
+        name="viewport"/>
+  <meta includeAspNetAntiforgeryToken="true"
+        name="htmx-config"/>
+  <title>@ViewData["Title"] - AspNetCoreMvcHtmx</title>
+  <link asp-append-version="true"
+        href="~/css/site.css"
+        rel="stylesheet"/>
+
+  <script src="~/lib/htmx.org/dist/htmx.min.js"></script>
+  <script src="~/lib/alpinejs/dist/cdn.min.js"></script>
 </head>
-<body>
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container-fluid">
-            <a asp-action="Index"
-               asp-area=""
-               asp-controller="Home"
-               class="navbar-brand">TailwindVSA</a>
-            <button aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                    class="navbar-toggler"
-                    data-bs-target=".navbar-collapse"
-                    data-bs-toggle="collapse"
-                    type="button">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a asp-action="Index"
-                           asp-area=""
-                           asp-controller="Home"
-                           class="nav-link text-dark">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-action="Privacy"
-                           asp-area=""
-                           asp-controller="Home"
-                           class="nav-link text-dark">Privacy</a>
-                    </li>
-                </ul>
-            </div>
+
+<body class="h-full">
+<header class="bg-white drop-shadow-md">
+  <nav aria-label="Top"
+       class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between w-full py-6">
+      <div class="flex items-center">
+        <a class="text-base font-medium text-gray-600 hover:text-gray-400"
+           href="#">
+          AspNetCoreMvcHtmx
+        </a>
+        <div class="hidden ml-10 space-x-8 lg:block">
+          <a asp-action="Index"
+             asp-controller="Home"
+             class="text-base font-medium text-gray-600 hover:text-gray-400"> Home </a>
+
+          <a asp-action="Privacy"
+             asp-controller="Home"
+             class="text-base font-medium text-gray-600 hover:text-gray-400"> Privacy </a>
+          <a asp-action="Index"
+             asp-controller="Registration"
+             class="text-base font-medium text-gray-600 hover:text-gray-400"> Registration </a>
         </div>
-    </nav>
+      </div>
+
+    </div>
+    <div class="flex flex-wrap justify-center py-4 space-x-6 lg:hidden">
+
+      <a asp-page="/Index"
+         class="text-base font-medium text-gray-600 hover:text-gray-400"> Home </a>
+
+      <a asp-page="/Privacy"
+         class="text-base font-medium text-gray-600 hover:text-gray-400"> Privacy </a>
+      <a asp-page="/Registration"
+         class="text-base font-medium text-gray-600 hover:text-gray-400"> Registration </a>
+    </div>
+  </nav>
 </header>
-<div class="container">
-    <main class="pb-3"
-          role="main">
-        @RenderBody()
-    </main>
+
+<div class="p-4 m-4">
+  <main class="pb-3"
+        role="main">
+    @RenderBody()
+  </main>
 </div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2023 - TailwindVSA -
+
+<footer class="bg-white sticky top-[100vh] border-solid border-t border-t-gray-200">
+  <div class="px-4 py-4 mx-auto max-w-7xl sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+
+    <div class="mt-8 md:mt-0 md:order-1">
+      <p class="text-base text-center text-gray-600">&copy; 2022 - AspNetCoreMvcHtmx -
         <a asp-action="Privacy"
-           asp-area=""
-           asp-controller="Home">Privacy</a>
+           asp-controller="Home"
+           class="text-blue-500">Privacy</a>
+      </p>
     </div>
+  </div>
 </footer>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script asp-append-version="true"
-        src="~/js/site.js"></script>
+
+@Html.HtmxAntiforgeryScript()
 @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
