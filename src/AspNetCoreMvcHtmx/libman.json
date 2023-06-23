@@ -8,6 +8,13 @@
       "files": [
         "dist/htmx.min.js"
       ]
+    },
+    {
+      "library": "alpinejs@3.12.2",
+      "destination": "wwwroot/lib/alpinejs",
+      "files": [
+        "dist/cdn.min.js"
+      ]
     }
   ]
 }
