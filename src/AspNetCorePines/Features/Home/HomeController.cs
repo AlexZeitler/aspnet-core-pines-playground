@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace AspNetCoreMvcHtmx.Features.Home;
+namespace AspNetCorePines.Features.Home;
 
 public class HomeController : Controller
 {
